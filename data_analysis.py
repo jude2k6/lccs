@@ -2,19 +2,42 @@ import os,csv,json
 
 basepath = os.path.dirname(__file__)
 
-total = 0
-female_total = 0
-male_total = 0
+#open json file into dictionary data
+with open("data.json","r") as f:
+    data = json.load(f)
 
-with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
-    csv_reader= csv.reader(csv_file)
 
-    for row in csv_reader:
-        print(row[5])
-        total+=float(row[5])
-        if row[1] == "Female":
-            female_total+=float(row[5])
-        else:
-            male_total+=float(row[5])
+    #open cleand csv to analysie
+    with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
+        csv_reader= csv.reader(csv_file)
 
-    print(total)
+        total = 0
+        female_total = 0
+        male_total = 0
+        n_women =0
+        n_men = 0
+
+        #totals pay 
+        for row in csv_reader:
+            print(row[5])
+            total+=float(row[5])
+            if row[1] == "Female":
+                n_women+=1
+                female_total+=float(row[5])
+            else:
+                n_men+=1
+                male_total+=float(row[5])
+
+        print(data)
+        #gets avrage
+        female_avg = female_total/n_women
+        male_avg = male_total/n_men
+        #ratio of womens to mens pay
+        female_payratio = round(female_avg/male_avg *100)
+        remainder = 100 - female_payratio
+        data["salary_gender"]["female_ratio"] = female_payratio
+        data["salary_gender"]["remainder"] = remainder
+
+
+with open("data.json","w") as f:
+    json.dump(data,f,indent=4)
