@@ -1,0 +1,25 @@
+{
+    "salary_gender": {
+        "female_ratio": [],
+        "remainder": []
+    },
+    "age_corilation": {
+        "male": {
+            "salary": [
+                
+            ],
+            "age": [
+               
+            ]
+        },
+        "female": {
+            "salary":[
+
+            ],
+
+            "age": [
+                
+            ]
+        }
+    }
+}
