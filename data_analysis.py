@@ -3,11 +3,11 @@ import os,csv,json
 basepath = os.path.dirname(__file__)
 
 #open json file into dictionary data
-with open("data.json","r") as f:
+with open("data_template.json","r") as f:
     data = json.load(f)
 
 
-    #open cleand csv to analysie
+    #open cleand csv to analysie gender pay ratio
     with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
         csv_reader= csv.reader(csv_file)
 
@@ -28,7 +28,7 @@ with open("data.json","r") as f:
                 n_men+=1
                 male_total+=float(row[5])
 
-        print(data)
+        
         #gets avrage
         female_avg = female_total/n_women
         male_avg = male_total/n_men
@@ -38,6 +38,22 @@ with open("data.json","r") as f:
         data["salary_gender"]["female_ratio"] = female_payratio
         data["salary_gender"]["remainder"] = remainder
 
+     #open cleand csv to analysie gender pay ratio
+    with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
+        csv_reader= csv.reader(csv_file)
+
+        for row in csv_reader:
+            if row[1] == "Female":
+                age = int(row[0])
+                salary = int(row[5])
+                data["age_corilation"]["female"]["age"].append(age)
+                data["age_corilation"]["female"]["salary"].append(salary)
+            else:
+                age = int(row[0])
+                salary = int(row[5])
+                data["age_corilation"]["male"]["age"].append(age)
+                data["age_corilation"]["male"]["salary"].append(salary)
+
 
 with open("data.json","w") as f:
-    json.dump(data,f,indent=4)
+    json.dump(data,f,indent=4, separators=(",", ":"))
