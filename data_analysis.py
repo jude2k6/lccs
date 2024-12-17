@@ -1,4 +1,5 @@
 import os,csv,json
+import pandas as pd
 
 basepath = os.path.dirname(__file__)
 
@@ -53,6 +54,19 @@ with open("data_template.json","r") as f:
                 salary = int(row[5])
                 data["age_corilation"]["male"]["age"].append(age)
                 data["age_corilation"]["male"]["salary"].append(salary)
+
+    male_salarys =pd.Series(data["age_corilation"]["male"]["salary"]) 
+    male_ages = pd.Series(data["age_corilation"]["male"]["age"])
+    male_coefficient = male_ages.corr(male_salarys)
+    data["age_corilation"]["male"]["corilation"] = male_coefficient
+    print(male_coefficient)
+
+    female_salarys =pd.Series(data["age_corilation"]["female"]["salary"]) 
+    female_ages = pd.Series(data["age_corilation"]["female"]["age"])
+    female_coefficient = female_ages.corr(female_salarys)
+    data["age_corilation"]["female"]["corilation"] = female_coefficient
+
+    print(female_coefficient)
 
 
 with open("data.json","w") as f:
