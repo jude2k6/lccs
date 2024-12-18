@@ -44,30 +44,46 @@ with open("data_template.json","r") as f:
         csv_reader= csv.reader(csv_file)
 
         for row in csv_reader:
+            #adds all female salarys and ages to file
             if row[1] == "Female":
                 age = int(row[0])
                 salary = int(row[5])
                 data["age_corilation"]["female"]["age"].append(age)
                 data["age_corilation"]["female"]["salary"].append(salary)
             else:
+                #adds all male salarys and ages to file
                 age = int(row[0])
                 salary = int(row[5])
                 data["age_corilation"]["male"]["age"].append(age)
                 data["age_corilation"]["male"]["salary"].append(salary)
-
+    #caclulates male r value
     male_salarys =pd.Series(data["age_corilation"]["male"]["salary"]) 
     male_ages = pd.Series(data["age_corilation"]["male"]["age"])
     male_coefficient = male_ages.corr(male_salarys)
     data["age_corilation"]["male"]["corilation"] = male_coefficient
     print(male_coefficient)
 
+    
+    #caclulates male r value adds 
     female_salarys =pd.Series(data["age_corilation"]["female"]["salary"]) 
     female_ages = pd.Series(data["age_corilation"]["female"]["age"])
     female_coefficient = female_ages.corr(female_salarys)
     data["age_corilation"]["female"]["corilation"] = female_coefficient
-
     print(female_coefficient)
 
+    with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
+        csv_reader= csv.reader(csv_file)
+        for row in csv_reader:
+            if row[2] == "PhD":
+                data["education"]["PhD"].append(int(row[5]))
+            elif row[2] == "Master's":
+                data["education"]["Master's"].append(int(row[5]))
+            else:
+                data["education"]["Bachelor's"].append(int(row[5]))
 
+
+
+
+#dumps dictionary back to json file format 
 with open("data.json","w") as f:
     json.dump(data,f,indent=4, separators=(",", ":"))

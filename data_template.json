@@ -11,6 +11,7 @@
             "age": [
                
             ]
+            
         },
         "female": {
             "salary":[
@@ -20,6 +21,12 @@
             "age": [
                 
             ]
+            
         }
+    },
+    "education":{
+        "Bachelor's":[],
+        "Master's":[],
+        "PhD":[]
     }
 }
