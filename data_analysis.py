@@ -1,5 +1,6 @@
-import os,csv,json
+import os,csv,json,statistics
 import pandas as pd
+
 
 basepath = os.path.dirname(__file__)
 
@@ -80,6 +81,16 @@ with open("data_template.json","r") as f:
                 data["education"]["Master's"].append(int(row[5]))
             else:
                 data["education"]["Bachelor's"].append(int(row[5]))
+
+    median = {
+        "Bachelor's" : statistics.median(data["education"]["Bachelor's"]),
+        "Master's" : statistics.median(data["education"]["Master's"]),
+        "PhD" : statistics.median(data["education"]["PhD"])
+    }
+
+    data["education"]["median"] = median
+    
+
 
 
 
