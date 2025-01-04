@@ -21,3 +21,4 @@ fig.write_html('genderpaygap.html', full_html= False)
 
 fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["median"],title="Median Salary by level of Education",color=["Bachlors","Masters","Phd"])
 fig.show()
+fig.write_html('median_byedu.html', full_html= False)
