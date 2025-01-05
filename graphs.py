@@ -1,6 +1,6 @@
 import plotly.express as px
-import json
-
+import json,os
+basepath = os.path.dirname(__file__)
 
 with open("data.json","r") as f:
     data = json.load(f)
@@ -11,14 +11,14 @@ gender = ["male"]*len(data["age_corilation"]["male"]["age"]) + ["female"]*len(da
 fig = px.scatter(x=age, y=salary,color = gender ,labels={'x':'Age', 'y':'Salary'}, title ="Age Salary Corrilation",)
 
 fig.show()
-fig.write_html('agecorrilation.html', full_html= False)
+fig.write_html(basepath+'/website/static/agecorrilation.html', full_html= False)
 
 fig = px.pie(values=data["salary_gender"], names= ["Female pay", "Extra men pay men recieve"],title="Gender wage gap")
 fig.update_traces(textinfo="label+percent")
 fig.show() 
-fig.write_html('genderpaygap.html', full_html= False)
+fig.write_html(basepath+'/website/static/genderpaygap.html', full_html= False)
 
 
 fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["median"],title="Median Salary by level of Education",color=["Bachlors","Masters","Phd"])
 fig.show()
-fig.write_html('median_byedu.html', full_html= False)
+fig.write_html(basepath+'/website/static/median_byedu.html', full_html= False)
