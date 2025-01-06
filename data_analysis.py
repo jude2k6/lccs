@@ -72,6 +72,8 @@ with open("data_template.json","r") as f:
     data["age_corilation"]["female"]["corilation"] = female_coefficient
     print(female_coefficient)
 
+
+    
     with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
         csv_reader= csv.reader(csv_file)
         for row in csv_reader:
@@ -90,8 +92,29 @@ with open("data_template.json","r") as f:
 
     data["education"]["median"] = median
     
+    #top and bottom from each education
+    def top_bottom(salarys,education):
 
+        ten_percent = round(len(salarys)/10)
 
+        for i in range(ten_percent):
+            data["education"]["top_bottom"]["salary"].append(salarys[i])
+            data["education"]["top_bottom"]["type"].append('Bottom 10%')
+            data["education"]["top_bottom"]["education"].append(education)
+        for i in range(len(salarys)-ten_percent,len(salarys),1):
+            data["education"]["top_bottom"]["salary"].append(salarys[i])
+            data["education"]["top_bottom"]["type"].append('Top 10%')
+            data["education"]["top_bottom"]["education"].append(education)
+
+    
+    bachlors_sorted = sorted(data["education"]["Bachelor's"])
+    print(type(bachlors_sorted))
+    masters_sorted = sorted(data["education"]["Master's"])
+    phd_sorted = sorted(data["education"]["PhD"])
+
+    top_bottom(bachlors_sorted,"Bachelor's")
+    top_bottom(masters_sorted,"Master's")
+    top_bottom(phd_sorted,"PhD")
 
 
 

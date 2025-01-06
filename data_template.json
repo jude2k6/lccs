@@ -17,6 +17,11 @@
   "education": {
     "Bachelor's": [],
     "Master's": [],
-    "PhD": []
+    "PhD": [],
+    "top_bottom": {
+      "salary": [],
+      "education": [],
+      "type": []
+    }
   }
 }
