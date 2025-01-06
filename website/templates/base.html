@@ -16,7 +16,9 @@
       <header
         class="d-flex flex-wrap justify-content-center py-3 border-bottom"
       >
-        <a href="/" class="d-flex align-items-center me-md-auto">Test</a>
+        <a href="/" class="d-flex align-items-center me-md-auto nav-link"
+          ><h1>Test</h1></a
+        >
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a href="/" class="nav-link {% block linkone %}{% endblock %}"
@@ -24,13 +26,22 @@
             >
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link {% block linktwo %}{% endblock %}"
+            <a
+              href="/education"
+              class="nav-link {% block linktwo %}{% endblock %}"
               >Education</a
             >
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link {% block linkthree %}{% endblock %}"
+            <a
+              href="/gender"
+              class="nav-link {% block linkthree %}{% endblock %}"
               >Gender</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="/age" class="nav-link {% block linkfour %}{% endblock %}"
+              >Age</a
             >
           </li>
         </ul>

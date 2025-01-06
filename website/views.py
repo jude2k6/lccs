@@ -1,10 +1,43 @@
 from flask import Blueprint,render_template
-import json,os
+import os
+
 
 views = Blueprint('views',__name__)
+#sets basepath so file paths will always be right 
 base_path = os.path.dirname(__file__)
+
+#saves graphs as variables as if I open the file when rendering it takes too long this uses extra memory but is faster
+with open(base_path+"/graphs/educationgraph.html","r",encoding="utf-8") as f:
+        education_graph = f.read()
+        
+with open(base_path+"/graphs/gendergraph.html","r",encoding="utf-8") as f:
+            gender_graph = f.read()
+            
+with open(base_path+"/graphs/agegraph.html","r",encoding="utf-8") as f:
+        age_graph = f.read()
+        
+
+
+
+#difines the urls and passes templates and graphs through
 
 @views.route('/')
 def home_site():
     
     return render_template('home.html')
+
+@views.route('/education')
+def education():
+    
+    return render_template('education.html',graph=education_graph)
+
+@views.route('/gender')
+def gender():
+
+    return render_template('gender.html',graph=gender_graph)
+
+@views.route('/age')
+def age():
+    
+    return render_template('age.html',graph=age_graph)
+
