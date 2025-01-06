@@ -24,20 +24,20 @@ with open(base_path+"/graphs/agegraph.html","r",encoding="utf-8") as f:
 @views.route('/')
 def home_site():
     
-    return render_template('home.html')
+    return render_template('home.html', active_page = 'home')
 
 @views.route('/education')
 def education():
     
-    return render_template('education.html',graph=education_graph)
+    return render_template('education.html',graph=education_graph, active_page = 'education')
 
 @views.route('/gender')
 def gender():
 
-    return render_template('gender.html',graph=gender_graph)
+    return render_template('gender.html',graph=gender_graph, active_page = 'gender')
 
 @views.route('/age')
 def age():
     
-    return render_template('age.html',graph=age_graph)
+    return render_template('age.html',graph=age_graph, active_page = 'age')
 
