@@ -23,7 +23,10 @@ fig.show()
 fig.write_html(basepath+'/website/graphs/gendergraph.html', full_html= False)
 
 
-fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["median"],title="Median Salary by level of Education",color=["Bachlors","Masters","Phd"])
+fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["median"],
+             title="Median Salary by level of Education",
+             labels={'x':'Education', 'y':'Salary'},
+             color=["Bachlors","Masters","Phd"])
 fig.show()
 fig.write_html(basepath+'/website/graphs/educationgraph.html', full_html= False)
 

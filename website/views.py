@@ -15,7 +15,8 @@ with open(base_path+"/graphs/gendergraph.html","r",encoding="utf-8") as f:
             
 with open(base_path+"/graphs/agegraph.html","r",encoding="utf-8") as f:
         age_graph = f.read()
-        
+with open(base_path+"/graphs/top_bottomgraph.html","r",encoding="utf-8") as f:
+        top_bottomgraph = f.read()
 
 
 
@@ -29,7 +30,7 @@ def home_site():
 @views.route('/education')
 def education():
     
-    return render_template('education.html',graph=education_graph, active_page = 'education')
+    return render_template('education.html',graph1=education_graph,graph2=top_bottomgraph, active_page = 'education')
 
 @views.route('/gender')
 def gender():
@@ -40,4 +41,9 @@ def gender():
 def age():
     
     return render_template('age.html',graph=age_graph, active_page = 'age')
+
+@views.route('/help')
+def help():
+    
+    return render_template('help.html', active_page = 'help')
 
