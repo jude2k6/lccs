@@ -1,5 +1,24 @@
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template,request
 import os
+
+
+def avg_sal(form):
+    import pandas as pd
+    import os
+
+    basepath = os.path.dirname(__file__)
+    basepath = basepath.strip("\website")
+    print(basepath)
+    df = pd.read_csv(basepath+'s\cleaned_data.csv',header=None)
+    df.columns=['age','gender','education','job','experience','salary']
+    print(df)
+
+    filtered_df = df[(df.age <= int(form['age'])+5)&(df.age >= int(form['age'])-5)  & (df.gender == form['gender']) & (df.education == form['education'])]
+    if filtered_df.empty:
+          average = "No data"
+    else:
+        average = round(filtered_df["salary"].mean())
+    return average 
 
 
 views = Blueprint('views',__name__)
@@ -46,4 +65,18 @@ def age():
 def help():
     
     return render_template('help.html', active_page = 'help')
+
+
+@views.route('/predictions', methods=['POST','GET'])
+def predictions():
+    
+    if request.method== 'POST':
+        
+        data=request.form
+        average  = avg_sal(data)
+        return (f"<p>{average}</p>")
+    else:
+          
+        return render_template('predictions.html', active_page = 'predictions')
+
 
