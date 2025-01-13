@@ -12,3 +12,12 @@ def avg_sal(form):
     filtered_df = df[(df.age <= form['age']+5)&(df.age >= form['age']-5)  & (df.gender == form['gender']) & (df.education == form['education'])]
     average = filtered_df["salary"].mean()
     return average 
+
+
+form = {
+    "age":45,
+    "gender":"Male",
+    "education":"PhD",
+}
+
+print(avg_sal(form))

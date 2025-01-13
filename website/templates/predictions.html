@@ -1,22 +1,30 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content%}
-<form action="#" method="post" id="form">
-  <label for="gender">gender</label>
-  <select name="gender" id="gender">
-    <option value="Male">Male</option>
-    <option value="Male">Female</option>
-  </select>
-  <label for="Age">Age</label>
-  <p><input type="text" maxlength="3" name="age" id="age" /></p>
+<form class="form-group" action="#" method="post" id="form">
+  <div class="form-group">
+    <label for="gender">gender</label>
 
-  <label for="edu">Education Level</label>
-  <select name="education" id="education">
-    <option value="Bachelor's">Bachelor's</option>
-    <option value="Master's">Master's</option>
-    <option value="PhD">PhD</option>
-  </select>
-  <label for="salary">Salary</label>
-  <p><input type="number" min="0" step="5000" name="salary" id="salary" /></p>
-
+    <select name="gender" id="gender">
+      <option value="Male">Male</option>
+      <option value="Male">Female</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Age">Age</label>
+    <p><input type="text" maxlength="3" name="age" id="age" /></p>
+  </div>
+  <div class="form-group">
+    <label for="edu">Education Level</label>
+    <select name="education" id="education">
+      <option value="Bachelor's">Bachelor's</option>
+      <option value="Master's">Master's</option>
+      <option value="PhD">PhD</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="salary">Salary</label>
+    <p><input type="number" min="0" step="5000" name="salary" id="salary" /></p>
+  </div>
+  <button type="submit" value="submit" class="btn btn-primary">Submit</button>
   <p><input type="submit" value="submit" /></p>
 </form>
 
