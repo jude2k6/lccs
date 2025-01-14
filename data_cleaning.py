@@ -11,8 +11,10 @@ with open(basepath+'\salary_data.csv', "r", encoding="utf-8") as csv_file:
         next(csv_reader)
         for line in csv_reader:
             row = line
-            striped = round(int(line[5].replace("€","").replace(",","").replace(".",""))/100)
-            row[5] = striped
+            striped_sal = round(int(line[5].replace("$","").replace(",","").replace(".",""))/100*0.93)
+            row[5] = striped_sal
+            stripped_age = int(line[0].strip(" Y/O"))
+            row[0]=stripped_age
             csv_writer.writerow(row)
         
         
