@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Plotly Hover Read-Out</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <div id="plot"></div>
+
+    <script>
+      // Data for the plot
+      var data = [
+        {
+          x: [1, 2, 3, 4],
+          y: [10, 15, 13, 17],
+          mode: "markers",
+          type: "scatter",
+          hovertemplate: "X: %{x}<br>Y: %{y}<extra></extra>",
+          name: "Points",
+        },
+      ];
+
+      // Layout for the plot
+      var layout = {
+        title: "Hover Read-Out Example",
+        hovermode: "closest",
+      };
+
+      // Render the plot
+      Plotly.newPlot("plot", data, layout);
+
+      // Add a hover event listener
+      var plotElement = document.getElementById("plot");
+      plotElement.on("plotly_hover", function (data) {
+        var point = data.points[0];
+        var hoverText = `X value: ${point.x}, Y value: ${point.y}`;
+
+        // Text-to-Speech
+        var utterance = new SpeechSynthesisUtterance(hoverText);
+        window.speechSynthesis.speak(utterance);
+      });
+    </script>
+  </body>
+</html>
