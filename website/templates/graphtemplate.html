@@ -1,2 +1,28 @@
 {% extends 'base.html' %} {% block content %} {% block graph %} {% endblock %}
+If you want to read the entire hover text as it appears in the tooltip without
+customizing it, you can directly extract it from Plotly's default
+point.hovertext or point.data.hovertemplate fields. Here's how to achieve that.
+Updated JavaScript to Read the Entire Hover Text javascript Copy Edit
+<script>
+  // Attach hover listeners dynamically to all Plotly graphs
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all Plotly graphs by their class name
+    var graphDivs = document.querySelectorAll(".plotly-graph-div");
+
+    graphDivs.forEach(function (graphDiv) {
+      graphDiv.on("plotly_hover", function (data) {
+        var point = data.points[0];
+
+        // Extract the hover text as it appears in the tooltip
+        var hoverText = point.hovertext || point.data.hovertemplate;
+
+        // Fallback to X and Y values if no hover text is set
+
+        // Text-to-Speech
+        var utterance = new SpeechSynthesisUtterance(hoverText);
+        window.speechSynthesis.speak(utterance);
+      });
+    });
+  });
+</script>
 {% endblock %}
