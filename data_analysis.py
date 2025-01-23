@@ -21,7 +21,7 @@ with open("data_template.json","r") as f:
 
         #totals pay 
         for row in csv_reader:
-            print(row[5])
+            
             total+=float(row[5])
             if row[1] == "Female":
                 n_women+=1
@@ -62,7 +62,7 @@ with open("data_template.json","r") as f:
     male_ages = pd.Series(data["age_corilation"]["male"]["age"])
     male_coefficient = male_ages.corr(male_salarys)
     data["age_corilation"]["male"]["corilation"] = male_coefficient
-    print(male_coefficient)
+    
 
     
     #caclulates male r value adds 
@@ -70,7 +70,7 @@ with open("data_template.json","r") as f:
     female_ages = pd.Series(data["age_corilation"]["female"]["age"])
     female_coefficient = female_ages.corr(female_salarys)
     data["age_corilation"]["female"]["corilation"] = female_coefficient
-    print(female_coefficient)
+    
 
 
     
@@ -108,7 +108,7 @@ with open("data_template.json","r") as f:
 
     
     bachlors_sorted = sorted(data["education"]["Bachelor's"])
-    print(type(bachlors_sorted))
+    
     masters_sorted = sorted(data["education"]["Master's"])
     phd_sorted = sorted(data["education"]["PhD"])
 
