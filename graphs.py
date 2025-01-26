@@ -16,13 +16,13 @@ fig = px.scatter(x=age, y=salary,color = gender ,
                  labels={'x':'Age', 'y':'Salary',"color":"Gender"},
                 title ="Age Salary Corrilation",)
 
-fig.write_html(basepath+'/website/graphs/agegraph.html', full_html= False, div_id = "graph")
+fig.write_html(basepath+'/website/graphs/agegraph.html', full_html= False)
 
 
 fig = px.pie(values=data["salary_gender"], names= ["Female pay", "Extra men pay men recieve"],title="Gender wage gap")
 fig.update_traces(textinfo="label+percent")
  
-fig.write_html(basepath+'/website/graphs/gendergraph.html', full_html= False, div_id = "graph")
+fig.write_html(basepath+'/website/graphs/gendergraph.html', full_html= False)
 
 
 fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["median"],
@@ -30,7 +30,11 @@ fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["median"],
              labels={'x':'Education', 'y':'Salary'},
              color=["Bachlors","Masters","Phd"])
 
-fig.write_html(basepath+'/website/graphs/educationgraph.html', full_html= False, div_id = "graph")
+fig.update_traces(
+    hovertemplate="Education: %{x}<br>Salary: %{y}<extra></extra>"
+)
+
+fig.write_html(basepath+'/website/graphs/educationgraph.html', full_html= False)
 
 #top and bottom 10%
 
@@ -39,6 +43,6 @@ fig.write_html(basepath+'/website/graphs/educationgraph.html', full_html= False,
 
 fig = px.histogram( x=data["education"]["top_bottom"]["education"], y=data["education"]["top_bottom"]["salary"],
              color=data["education"]["top_bottom"]["type"], barmode='group',
-             histfunc='avg',title='Top and bottom 10% by salary')
+             histfunc='avg',title='Top and bottom 10% by salary',labels={'x':'Education', 'y':'Salary','color':'Ranking'})
 
-fig.write_html(basepath+'/website/graphs/top_bottomgraph.html', full_html= False, div_id = "graph2")
+fig.write_html(basepath+'/website/graphs/top_bottomgraph.html', full_html= False)
