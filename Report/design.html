@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container">
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4">Exam number: 220310 </span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a href="home.html" class="nav-link" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="meeting_brief.html" class="nav-link"
+                >Meeting the brief</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="investigation.html" class="nav-link">Investigation</a>
+            </li>
+            <li class="nav-item">
+              <a href="design.html" class="nav-link active">Design</a>
+            </li>
+            <li class="nav-item">
+              <a href="implementation.html" class="nav-link">Implementation</a>
+            </li>
+            <li class="nav-item">
+              <a href="testing.html" class="nav-link">Testing</a>
+            </li>
+            <li class="nav-item">
+              <a href="evaluation.html" class="nav-link">Evaluation </a>
+            </li>
+          </ul>
+        </ul>
+      </header>
+    </div>
+    <div class="container">
+      <h1>Design</h1>
+      <div>
+        <p>
+          The project can be broken into two distinct parts 1. Data analysis and
+          graphing 2. The interactive Information system. I have decided to
+          separate these two parts into different files so I can abstract away
+          the code I am not currently working on.
+        </p>
+        <div class="pt-4">
+          <h2>Data Cleaning</h2>
+          <div>
+            The data I downloaded off of kaggle was in csv format but it was not
+            ready for analysis as the numbers were formatted as python strings
+            with a € before the value, there were other issues with the data set
+            that I had to fix too. I wanted to make graphs that showed the
+            effect different factors had on salary, I wanted to do this through
+            a range of different graphs that would be best suited to the chosen
+            factor. These graphs also had to be interactive and should allow
+            users to hover to see the values associated with a point, filter and
+            zoom in to show data between certain points. These graphs should
+            also be useful to the end user.
+          </div>
+        </div>
+        <div class="pt-4">
+          <h2>Website</h2>
+          <div>
+            The website should display the graphs in a way that makes them
+            accessible to all users possible so they should have some built in
+            accessibility features such as an accessible font such as comic Sans
+            which makes it easy for people with dyslexia to read and text to
+            speech if possible. The website also has to be able to advise users
+            based on an input using the data from the dataset this should have
+            error catching so users can not input values that would break the
+            program, with my chosen dataset I think a good way to show this
+            would be to have a user input their salary, age, gender and level of
+            education it would then process this data and tell users if they are
+            being paid fairly compared to those with similarly factors. The site
+            should also gather some data from users, store it and display it on
+            the website in some way. I think the easiest way to achieve this
+            would be to store comments in a json file as python works with json
+            files very easily.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</html>

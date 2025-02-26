@@ -6,8 +6,10 @@ import os,pandas as pd
 
 views = Blueprint('views',__name__)
 #sets basepath so file paths will always be right 
-base_path = os.path.dirname(__file__)
 
+base_path = os.path.dirname(__file__)
+with open(base_path+"/graphs/educationgraph.html","r",encoding="utf-8") as f:
+        education_graph = f.read()
 
 def avg_sal(form):
     

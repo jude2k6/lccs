@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container">
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4">Exam number: 220310 </span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a href="home.html" class="nav-link" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="meeting_brief.html" class="nav-link"
+                >Meeting the brief</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="investigation.html" class="nav-link">Investigation</a>
+            </li>
+            <li class="nav-item">
+              <a href="design.html" class="nav-link">Design</a>
+            </li>
+            <li class="nav-item">
+              <a href="implementation.html" class="nav-link active"
+                >Implementation</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="testing.html" class="nav-link">Testing</a>
+            </li>
+            <li class="nav-item">
+              <a href="evaluation.html" class="nav-link">Evaluation </a>
+            </li>
+          </ul>
+        </ul>
+      </header>
+    </div>
+    <div class="container">
+      <h1>Implementation</h1>
+      <div>
+        <div class="pt-4">
+          <h2>Cleaning</h2>
+          <div>
+            <p>
+              To begin my implementation I had to clean the data, using the
+              python module csv, this module allows you to loop through a csv
+              file and access individual cells using python list syntax, as you
+              can see in Figure 3.1
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <em><strong>Figure 3.1</strong></em>
+            </p>
+            <img src="static/cleaning.png" class="img-fluid" />
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col">
+            <h2>Analysis</h2>
+            <p>
+              Now that the data had been cleaned I opened the new cleaned file
+              and decided that the easiest way to keep track of the data that
+              was being used for the different graphs would be to write the data
+              for the needed for each individual graph to a json file where it
+              could be easily accessed as json files can be loaded and accessed
+              like a python dictionary. The format of this json file can be seen
+              in figure 3.2
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <em><strong>Figure 3.2</strong></em>
+            </p>
+            <img src="static/json.png" class="img-fluid" />
+          </div>
+        </div>
+        <div class="pt-4">
+          <h2>Graphing</h2>
+          <div>
+            When I originally made the graphs I was using matplotlib but then
+            when I had to implement these into the website It was too difficult,
+            so then upon further research it turned out that if I used plotly to
+            make the graphs, plotly has a tool to write html for these graphs so
+            instead I could write this html for each graph to a file as you can
+            see in figure 3.3, these files can then be opened an the html
+            injected onto the website.
+          </div>
+          <div>
+            <p>
+              <em><strong>Figure 3.3</strong></em>
+            </p>
+            <img src="static/graph_code.png" class="img-fluid" />
+          </div>
+        </div>
+        <div class="pt-4">
+          <h2>Website</h2>
+          <div>
+            <div class="row">
+              <div class="col">
+                <p>
+                  When researching what would be needed to make an interactive
+                  website with a python backend 3 frameworks popped up Django,
+                  Fastapi and Flask. After further research Flask became the
+                  obvious choice as it was the one most suited to small scale
+                  apps where performance is not a major factor.
+                </p>
+                <p>
+                  After setting up the file system seen in figure 3.4 I began to
+                  write the code that would serve the website and establish all
+                  of the paths for the different pages on the website that would
+                  be accessed through the navigation bar, this was done in
+                  views.py
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <em><strong>Figure 3.4</strong></em>
+                </p>
+                <img src="static/file_scructure.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <p>
+              Flask has a templating engine called jinja that allows you to pass
+              variables from the python back end and display them straight on
+              the website. This is how I got the graphs html located in the
+              graphs folder seen in figure 3.4 and loaded it onto the website,
+              some of the code for this can be seen in figure 3.5 this is then
+              accessed in the html using jinjas syntax which can be seen in
+              figure 3.6.
+            </p>
+
+            <div>
+              <p>
+                <em><strong>Figure 3.5</strong></em>
+              </p>
+              <img src="static/views_example.png" class="img-fluid" />
+              <p>
+                <em><strong>Figure 3.6</strong></em>
+              </p>
+              <img src="static/jinja.png" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h2>User recommendations</h2>
+          <div>
+            <p>
+              To make recommendations to the user I had to take an input off of
+              the user and send it to my flask backend thankfully this is made
+              easy by flask using post methods. When a user presses the submit
+              button on the form a post request is sent to the back end with the
+              data packaged as a dictionary. I then filter my cleaned data based
+              on what the user submitted and then return the average salary of
+              the people that meet this criteria and the percentage more or less
+              that the user makes. The code for this can be seen in figure 3.7
+            </p>
+            <div class="pt-4 pb-2">
+              <p>
+                <em><strong>Figure 3.7</strong></em>
+              </p>
+              <img src="static/user_suggestion.png" class="img-fluid" />
+            </div>
+            <p>
+              This data is then passed through to the website using jinja like I
+              said previously.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</html>
