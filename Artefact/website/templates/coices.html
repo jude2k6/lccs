@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech Synthesis Voices</title>
+  </head>
+  <body>
+    <h1>Speech Synthesis Voices</h1>
+    <button onclick="listVoices()">Load Voices</button>
+    <div id="voicesList"></div>
+
+    <script>
+      function listVoices() {
+        // Wait until the voices are loaded
+        let synth = window.speechSynthesis;
+        let voices = synth.getVoices();
+
+        // Handle the case if voices are not loaded immediately
+        if (voices.length === 0) {
+          synth.onvoiceschanged = function () {
+            voices = synth.getVoices();
+            displayVoices(voices);
+          };
+        } else {
+          displayVoices(voices);
+        }
+      }
+
+      function displayVoices(voices) {
+        const voicesListDiv = document.getElementById("voicesList");
+        voicesListDiv.innerHTML = ""; // Clear previous list
+
+        voices.forEach((voice, index) => {
+          let voiceOption = document.createElement("button");
+          voiceOption.textContent = `Voice ${index + 1}: ${voice.name} (${
+            voice.lang
+          })`;
+          voiceOption.onclick = function () {
+            speakSample(voice);
+          };
+          voicesListDiv.appendChild(voiceOption);
+          voicesListDiv.appendChild(document.createElement("br"));
+        });
+      }
+
+      function speakSample(voice) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(
+          "Hello, this is a test of the speech synthesis voice."
+        );
+        utterance.voice = voice;
+        synth.speak(utterance);
+      }
+    </script>
+  </body>
+</html>

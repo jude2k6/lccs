@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %} {% block graph %} {% endblock %}
+
+<script>
+  // Attach hover listeners dynamically to all Plotly graphs
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all Plotly graphs by their class name
+    var graphDivs = document.querySelectorAll(".plotly-graph-div");
+
+    graphDivs.forEach(function (graphDiv) {
+      graphDiv.on("plotly_hover", function (data) {
+        var point = data.points[0];
+
+        // Cancel any ongoing speech synthesis
+        window.speechSynthesis.cancel();
+
+        // Extract hovertext from the point directly
+        var hoverText = point.data.hovertemplate;
+
+        // If hovertemplate is set and contains placeholders like %{x}, %{y}, etc., we need to replace them with real values
+        if (hoverText) {
+          hoverText = hoverText
+            .replace("%{x}", point.x) // Replace %{x} with the actual x value
+            .replace("%{y}", point.y) // Replace %{y} with the actual y value
+            .replace("%{color}", point.data.name) // Replace %{color} with the actual color (category name)
+            .replace("<extra></extra>", ""); // Remove any extra template-specific content
+        } else {
+          // Fallback to a default format if hovertext isn't available
+          hoverText = `X-axis: ${point.x}, Y-axis: ${point.y}`;
+        }
+
+        // Split the hover text into multiple parts by line breaks (<br>)
+        var hoverParts = hoverText.split("<br>"); // Split by line breaks
+
+        // Function to speak each part with a pause between them
+        function speakWithPause(parts, index) {
+          if (index < parts.length) {
+            var utterance = new SpeechSynthesisUtterance(parts[index]);
+            // Set a callback to speak the next part after a small pause
+            utterance.onend = function () {
+              // Add a small delay between parts before speaking the next
+              setTimeout(function () {
+                speakWithPause(parts, index + 1);
+              }, 500); // 500 ms pause between parts
+            };
+            window.speechSynthesis.speak(utterance);
+          }
+        }
+
+        // Start speaking the hover text with pauses
+        speakWithPause(hoverParts, 0);
+
+        console.log(hoverText); // Optionally log the hoverText to the console for debugging
+      });
+    });
+  });
+</script>
+
+{% endblock %}
