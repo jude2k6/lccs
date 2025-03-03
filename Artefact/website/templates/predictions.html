@@ -1,62 +1,102 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content%}
-<div>
-  <form action="#" method="post" id="form">
-    <div>
-      <label for="gender">Gender</label>
-      <select name="gender" id="gender">
-        <option value="Male">Male</option>
-        <option value="Male">Female</option>
-      </select>
-    </div>
-    <div>
-      <label for="Age">Age</label>
-      <p><input type="text" maxlength="3" name="age" id="age" /></p>
-    </div>
-    <div>
-      <label for="edu">Education Level</label>
-      <select name="education" id="education">
-        <option value="Bachelor's">Bachelor's</option>
-        <option value="Master's">Master's</option>
-        <option value="PhD">PhD</option>
-      </select>
-    </div>
-    <div>
-      <label for="salary">Salary</label>
-      <p>
-        <input type="number" min="0" step="5000" name="salary" id="salary" />
-      </p>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+<div class="container pt-4">
+  <div class="text-center">
+    <div class="card d-inline-block shadow-lg">
+      <div class="card-header">Form</div>
+      <div class="card-body">
+        <form action="#" method="post" id="form">
+          <div>
+            <label for="name">Name</label>
+            <p><input type="text" name="name" id="name" /></p>
+          </div>
 
-    {{average}}
-    <div>
-      {% if average is defined %} People within a 5 year age range with the same
-      education make on avegrage €{{average}} You make {{percent}} than average
-      {% endif %}
+          <div>
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+              <option value="Male">Male</option>
+              <option value="Male">Female</option>
+            </select>
+          </div>
+          <div>
+            <label for="Age">Age</label>
+            <p><input type="text" maxlength="3" name="age" id="age" /></p>
+          </div>
+          <div>
+            <label for="edu">Education Level</label>
+            <select name="education" id="education">
+              <option value="Bachelor's">Bachelor's</option>
+              <option value="Master's">Master's</option>
+              <option value="PhD">PhD</option>
+            </select>
+          </div>
+          <div>
+            <label for="salary">Salary</label>
+            <p>
+              <input
+                type="number"
+                min="0"
+                step="5000"
+                name="salary"
+                id="salary"
+              />
+            </p>
+          </div>
+          <div>
+            <label for="comment">Comment</label>
+            <p><input type="text" name="comment" id="comment" /></p>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <script>
-      const form = document.getElementById("form");
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const gender = document.getElementById("gender").value;
-        const age = document.getElementById("age").value;
-        const education = document.getElementById("education").value;
-        const salary = document.getElementById("salary").value;
+  <div>
+    {% if average is defined %} People within a 5 year age range with the same
+    education make on avegrage €{{average}} You make {{percent}} than average {%
+    endif %}
+  </div>
+  <div>
+    {% for i in comments %}
+    <div class="card mt-4 shadow">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{comments[i]["name"]}}
+          <span class="text-muted fs-6"> (Age: {{comments[i]["age"]}})</span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Salary: {{comments[i]["salary"]}}
+        </h6>
+        <p class="card-text">{{comments[i]["comment"]}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <script>
+    const form = document.getElementById("form");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const gender = document.getElementById("gender").value;
+      const age = document.getElementById("age").value;
+      const education = document.getElementById("education").value;
+      const salary = document.getElementById("salary").value;
 
-        if (!gender || !age || !education || !salary) {
-          alert("Please fill out all fields!");
-          return;
-        }
-        if (age < 18) {
-          alert("You must be at least 18 years old to submit this form.");
-          return;
-        }
-        form.submit();
-      });
-    </script>
-    {% endblock %}
-  </form>
+      if (!gender || !age || !education || !salary) {
+        alert("Please fill out all fields!");
+        return;
+      }
+      if (age < 18) {
+        alert("You must be at least 18 years old to submit this form.");
+        return;
+      }
+      if (isNaN(age)) {
+        alert("Your age must be a number");
+        return;
+      }
+      form.submit();
+    });
+  </script>
+  {% endblock %}
 </div>

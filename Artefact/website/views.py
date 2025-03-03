@@ -1,5 +1,5 @@
 from flask import Blueprint,render_template,request
-import os,pandas as pd
+import os,json,pandas as pd
 
 
 
@@ -14,8 +14,8 @@ with open(base_path+"/graphs/educationgraph.html","r",encoding="utf-8") as f:
 def avg_sal(form):
     
     basepath = os.path.dirname(__file__)
-    basepath = basepath.strip("\website")
-    df = pd.read_csv(basepath+'s\cleaned_data.csv',header=None)
+    basepath = basepath.replace("\website", "")
+    df = pd.read_csv(basepath+'\cleaned_data.csv',header=None)
     df.columns=['age','gender','education','job','experience','salary']
     filtered_df = df[(df.age <= int(form['age'])+5)&(df.age >= int(form['age'])-5)  & (df.gender == form['gender']) & (df.education == form['education'])]
     if filtered_df.empty:
@@ -75,10 +75,15 @@ def help():
 def predictions():
     
     if request.method == 'POST':
-        
+        basepath = os.path.dirname(__file__)
         data=request.form
         average,percent = avg_sal(data)
-        return render_template('predictions.html',average=average,percent=percent, active_page = 'predictions')
+        with open(basepath+"/comments.json","r") as f:
+            comments = json.load(f)
+        comments[len(comments)+1] = data
+        with open(basepath+"/comments.json","w") as f:
+            json.dump(comments,f,indent=4, separators=(",", ":"))
+        return render_template('predictions.html',average=average,percent=percent,comments=comments ,active_page = 'predictions')
     else:
           
         return render_template('predictions.html', active_page = 'predictions')
