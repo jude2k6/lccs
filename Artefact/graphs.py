@@ -3,7 +3,7 @@ import json,os
 basepath = os.path.dirname(__file__)
 
 #opens the json file converts it to a dictionary called data
-with open("data.json","r") as f:
+with open(basepath +"/data.json","r") as f:
     data = json.load(f)
 
 #joins the male anf female ages into a single age list does the same with salarys
@@ -15,13 +15,13 @@ gender = ["male"]*len(data["age_corilation"]["male"]["age"]) + ["female"]*len(da
 fig = px.scatter(x=age, y=salary,color = gender ,
                  labels={'x':'Age', 'y':'Salary',"color":"Gender"},
                 title ="Age Salary Corrilation",)
-
+fig.update_layout(font=dict(family="Comic Sans MS"))
 fig.write_html(basepath+'/website/graphs/agegraph.html', full_html= False)
 
 
 fig = px.pie(values=data["salary_gender"], names= ["Female pay", "Extra men pay men recieve"],title="Gender wage gap")
 fig.update_traces(textinfo="label+percent")
- 
+fig.update_layout(font=dict(family="Comic Sans MS"))
 fig.write_html(basepath+'/website/graphs/gendergraph.html', full_html= False)
 
 
@@ -33,7 +33,7 @@ fig = px.bar(x=["Bachlors","Masters","Phd"],y=data["education"]["level"]["median
 fig.update_traces(
     hovertemplate="Education: %{x}<br>Salary: %{y}<extra></extra>"
 )
-
+fig.update_layout(font=dict(family="Comic Sans MS"))
 fig.write_html(basepath+'/website/graphs/educationgraph.html', full_html= False)
 
 #top and bottom 10%

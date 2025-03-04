@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content%}
-<div class="container pt-4">
-  <div class="text-center">
+
+<div class="row text-center">
+  <div class="col">
     <div class="card d-inline-block shadow-lg">
       <div class="card-header">Form</div>
       <div class="card-body">
@@ -52,51 +53,55 @@
       </div>
     </div>
   </div>
-
-  <div>
-    {% if average is defined %} People within a 5 year age range with the same
-    education make on avegrage €{{average}} You make {{percent}} than average {%
-    endif %}
-  </div>
-  <div>
-    {% for i in comments %}
-    <div class="card mt-4 shadow">
-      <div class="card-body">
-        <h5 class="card-title">
-          {{comments[i]["name"]}}
-          <span class="text-muted fs-6"> (Age: {{comments[i]["age"]}})</span>
-        </h5>
-        <h6 class="card-subtitle mb-2 text-muted">
-          Salary: {{comments[i]["salary"]}}
-        </h6>
-        <p class="card-text">{{comments[i]["comment"]}}</p>
-      </div>
+  {% if average is defined %}
+  <div class="col">
+    <div>
+      <h1>Analysis</h1>
+      People within a 5 year age range with the same as you education make on
+      avegrage €{{average}} You make {{percent}} than average
     </div>
-    {% endfor %}
   </div>
-  <script>
-    const form = document.getElementById("form");
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const gender = document.getElementById("gender").value;
-      const age = document.getElementById("age").value;
-      const education = document.getElementById("education").value;
-      const salary = document.getElementById("salary").value;
-
-      if (!gender || !age || !education || !salary) {
-        alert("Please fill out all fields!");
-        return;
-      }
-      if (age < 18) {
-        alert("You must be at least 18 years old to submit this form.");
-        return;
-      }
-      if (isNaN(age)) {
-        alert("Your age must be a number");
-        return;
-      }
-      form.submit();
-    });
-  </script>
-  {% endblock %}
+  {% endif %}
 </div>
+<div class="mt-5">
+  {% for i in comments %}
+  <div class="card mt-2 shadow">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{comments[i]["name"]}}
+        <span class="text-muted fs-6"> (Age: {{comments[i]["age"]}})</span>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Salary: {{comments[i]["salary"]}}
+      </h6>
+      <p class="card-text">{{comments[i]["comment"]}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+  const form = document.getElementById("form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const gender = document.getElementById("gender").value;
+    const age = document.getElementById("age").value;
+    const education = document.getElementById("education").value;
+    const salary = document.getElementById("salary").value;
+
+    if (!gender || !age || !education || !salary) {
+      alert("Please fill out all fields!");
+      return;
+    }
+    if (age < 18) {
+      alert("You must be at least 18 years old to submit this form.");
+      return;
+    }
+    if (isNaN(age)) {
+      alert("Your age must be a number");
+      return;
+    }
+    form.submit();
+  });
+</script>
+
+{% endblock %}
