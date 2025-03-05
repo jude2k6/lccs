@@ -1,3 +1,6 @@
-{% extends 'graphtemplate.html' %} 
-{% block title %}Gender{% endblock %}
-{% block graph %} {{ graph|safe }} {% endblock %}
+{% extends 'graphtemplate.html' %} {% block title %}Gender{% endblock %} {%
+block graph %}
+<div class="card shadow-lg mt-4">
+  <div class="card-body">{{ graph|safe }}</div>
+</div>
+{% endblock %}

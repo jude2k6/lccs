@@ -1,2 +1,23 @@
-{% extends 'graphtemplate.html' %} {% block title %}Education{% endblock %} {%
-block graph %} {{ graph1|safe }} {{ graph2|safe }}{% endblock %}
+{% extends 'graphtemplate.html' %} {% block title %}Education{% endblock %}
+{%block graph %}
+
+<div class="card shadow-lg mt-4">
+  <div class="card-body">
+    {{ graph1|safe }}
+    <p>This bar chart shows the median salaey by levle of education</p>
+  </div>
+</div>
+<div class="card shadow-lg mt-4">
+  <div class="card-body">
+    {{ graph2|safe }}
+    <p>
+      This bar chart shows the top and bottom 10% salary by each level of
+      education.
+    </p>
+    <p>
+      If we compare this and the other graph we can see that the difference
+      between salary are wider at the bottom ang gradaully close
+    </p>
+  </div>
+</div>
+{% endblock %}
