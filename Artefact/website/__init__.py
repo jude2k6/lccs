@@ -2,8 +2,8 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'callan'
-
+    app.config['SECRET_KEY'] = 'szfdgdxfcgjSARR'
+    #imports the views
     from .views import views
    
 

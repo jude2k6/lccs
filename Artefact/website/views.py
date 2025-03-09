@@ -5,24 +5,30 @@ import os,json,pandas as pd
 
 
 views = Blueprint('views',__name__)
-#sets basepath so file paths will always be right 
 
+#sets basepath so file paths will always be right 
 base_path = os.path.dirname(__file__)
-with open(base_path+"/graphs/educationgraph.html","r",encoding="utf-8") as f:
-        education_graph = f.read()
 
 def avg_sal(form):
-    
+    #sets basepath so file paths will always be right 
     basepath = os.path.dirname(__file__)
     basepath = basepath.replace("\website", "")
+    #opens file as df
     df = pd.read_csv(basepath+'\cleaned_data.csv',header=None)
     df.columns=['age','gender','education','job','experience','salary']
+    #filters the df based on the form
     filtered_df = df[(df.age <= int(form['age'])+5)&(df.age >= int(form['age'])-5)  & (df.gender == form['gender']) & (df.education == form['education'])]
+    
+    #if the df is empty returns this
     if filtered_df.empty:
           average = "No data"
+          percentage = "No data"
+
     else:
+        #calculates the average average on the filtered form
         average = round(filtered_df["salary"].mean())
-        percentage = 100  - round(int(form['salary'])/average*100)
+        # calculates the percentage compared to the filtered df
+        percentage = str(abs(100  - round(int(form['salary'])/average*100)))
         if int(form['salary'])>average:
              percentage = percentage + "% more"
         else:
@@ -43,7 +49,7 @@ with open(base_path+"/graphs/top_bottomgraph.html","r",encoding="utf-8") as f:
 
 
 
-#difines the urls and passes templates and graphs through
+#defines the urls and passes templates and graphs through 
 
 @views.route('/')
 def home_site():
@@ -73,16 +79,24 @@ def help():
 
 @views.route('/predictions', methods=['POST','GET'])
 def predictions():
-    
+    #if form is sent
     if request.method == 'POST':
         basepath = os.path.dirname(__file__)
+        #forms data is written to variable data
         data=request.form
+        #passes through data into the fuction that returns average and perecnt
         average,percent = avg_sal(data)
+        
+
+        #opens the commentsjson and assignes it to variable comments
         with open(basepath+"/comments.json","r") as f:
             comments = json.load(f)
-        comments[len(comments)+1] = data
-        with open(basepath+"/comments.json","w") as f:
-            json.dump(comments,f,indent=4, separators=(",", ":"))
+        #writes users data to comments if they agree
+        if data["collect"] == "yes":
+            #checks how many comments there are and writes new comment to next 
+            comments[len(comments)+1] = data
+            with open(basepath+"/comments.json","w") as f:
+                json.dump(comments,f,indent=4, separators=(",", ":"))
         return render_template('predictions.html',average=average,percent=percent,comments=comments ,active_page = 'predictions')
     else:
           

@@ -5,7 +5,7 @@ import pandas as pd
 basepath = os.path.dirname(__file__)
 
 #open json file into dictionary data
-with open("data_template.json","r") as f:
+with open(basepath +"/data_template.json","r") as f:
     data = json.load(f)
 
 
@@ -13,9 +13,10 @@ with open("data_template.json","r") as f:
     with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
         csv_reader= csv.reader(csv_file)
 
+        #initiates counters needed to do the totals
         total = 0
-        female_total = 0
-        male_total = 0
+        female_saltotal = 0
+        male_saltotal = 0
         n_women =0
         n_men = 0
 
@@ -25,22 +26,23 @@ with open("data_template.json","r") as f:
             total+=float(row[5])
             if row[1] == "Female":
                 n_women+=1
-                female_total+=float(row[5])
+                female_saltotal+=float(row[5])
             else:
                 n_men+=1
-                male_total+=float(row[5])
+                male_saltotal+=float(row[5])
 
         
-        #gets avrage
-        female_avg = female_total/n_women
-        male_avg = male_total/n_men
+        #gets average 
+        female_avg = female_saltotal/n_women
+        male_avg = male_saltotal/n_men
         #ratio of womens to mens pay
         female_payratio = round(female_avg/male_avg *100)
         remainder = 100 - female_payratio
+        #writes to dictionary
         data["salary_gender"]["female_ratio"] = female_payratio
         data["salary_gender"]["remainder"] = remainder
 
-     #open cleand csv to analysie gender pay ratio
+    #open cleand csv to analysie gender pay ratio
     with open(basepath +"\cleaned_data.csv" , "r") as csv_file:
         csv_reader= csv.reader(csv_file)
 
@@ -119,5 +121,5 @@ with open("data_template.json","r") as f:
 
 
 #dumps dictionary back to json file format 
-with open("data.json","w") as f:
+with open(basepath +"/data.json","w") as f:
     json.dump(data,f,indent=4, separators=(",", ":"))

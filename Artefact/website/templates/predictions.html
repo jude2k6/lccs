@@ -60,7 +60,15 @@
       </div>
     </div>
   </div>
-  {% if average is defined %}
+  {% if average is defined %} {% if average == "No data" %}
+  <div class="col">
+    <div>
+      <h1>Analysis</h1>
+      Im sorry but at the moment we do not have enough data to give an accurate
+      analysis based on the data you put in the form.
+    </div>
+  </div>
+  {% else %}
   <div class="col">
     <div>
       <h1>Analysis</h1>
@@ -68,7 +76,7 @@
       avegrage €{{average}} You make {{percent}} than average
     </div>
   </div>
-  {% endif %}
+  {% endif %} {% endif %}
 </div>
 <div class="mt-5">
   {% for i in comments %}

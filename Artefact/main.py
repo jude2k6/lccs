@@ -1,10 +1,10 @@
 from website import create_app
 import os
 
-base_path = os.path.dirname(__file__)
+#creates the app
 app = create_app()
 
-
+#runs the app
 if __name__ == '__main__':
     app.run(debug=True)
  

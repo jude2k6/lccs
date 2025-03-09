@@ -1,26 +1,83 @@
 {
     "1":{
-        "name":"werfg",
+        "name":"ewfq",
         "gender":"Male",
-        "age":"55",
+        "age":"44",
         "education":"Bachelor's",
-        "salary":"60000",
-        "comment":"gragarw"
+        "salary":"75000",
+        "comment":"aersg",
+        "collect":"yes"
     },
     "2":{
-        "name":"rdtfgyuh",
-        "gender":"Male",
-        "age":"43",
-        "education":"Bachelor's",
-        "salary":"65000",
-        "comment":"4e56t7g8"
-    },
-    "3":{
-        "name":"a34sdrftg8u",
+        "name":"ergw",
         "gender":"Male",
         "age":"55",
         "education":"Bachelor's",
-        "salary":"100000",
-        "comment":"esdrtyihojp"
+        "salary":"70000",
+        "comment":"sdth",
+        "collect":"yes"
+    },
+    "3":{
+        "name":"tghwer",
+        "gender":"Male",
+        "age":"55",
+        "education":"Bachelor's",
+        "salary":"160000",
+        "comment":"erths",
+        "collect":"yes"
+    },
+    "4":{
+        "name":"rgawe",
+        "gender":"Male",
+        "age":"18",
+        "education":"Bachelor's",
+        "salary":"65000",
+        "comment":"eqf",
+        "collect":"yes"
+    },
+    "5":{
+        "name":"sertbn",
+        "gender":"Male",
+        "age":"18",
+        "education":"Bachelor's",
+        "salary":"55000",
+        "comment":"feq",
+        "collect":"yes"
+    },
+    "6":{
+        "name":"werg",
+        "gender":"Male",
+        "age":"18",
+        "education":"Bachelor's",
+        "salary":"35000",
+        "comment":"ewf",
+        "collect":"yes"
+    },
+    "7":{
+        "name":"ERG",
+        "gender":"Male",
+        "age":"18",
+        "education":"PhD",
+        "salary":"60000",
+        "comment":"ERTH",
+        "collect":"yes"
+    },
+    "8":{
+        "name":"hj",
+        "gender":"Male",
+        "age":"18",
+        "education":"PhD",
+        "salary":"60000",
+        "comment":"ryjyrdj",
+        "collect":"yes"
+    },
+    "9":{
+        "name":"egw",
+        "gender":"Male",
+        "age":"22",
+        "education":"Bachelor's",
+        "salary":"410000",
+        "comment":"qrWE",
+        "collect":"yes"
     }
 }
