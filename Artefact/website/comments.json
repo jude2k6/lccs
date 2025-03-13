@@ -1,83 +1,56 @@
 {
     "1":{
-        "name":"ewfq",
+        "name":"John",
         "gender":"Male",
         "age":"44",
         "education":"Bachelor's",
         "salary":"75000",
-        "comment":"aersg",
+        "comment":"great site",
         "collect":"yes"
     },
     "2":{
-        "name":"ergw",
+        "name":"Jane smith",
         "gender":"Male",
-        "age":"55",
-        "education":"Bachelor's",
-        "salary":"70000",
-        "comment":"sdth",
+        "age":"45",
+        "education":"Master's",
+        "salary":"75000",
+        "comment":"thanks for the info",
         "collect":"yes"
     },
     "3":{
-        "name":"tghwer",
+        "name":"Mike Ross",
         "gender":"Male",
         "age":"55",
-        "education":"Bachelor's",
-        "salary":"160000",
-        "comment":"erths",
+        "education":"PhD",
+        "salary":"120000",
+        "comment":"thank you",
         "collect":"yes"
     },
     "4":{
-        "name":"rgawe",
+        "name":"John doe",
         "gender":"Male",
-        "age":"18",
+        "age":"55",
         "education":"Bachelor's",
-        "salary":"65000",
-        "comment":"eqf",
+        "salary":"85000",
+        "comment":"great website",
         "collect":"yes"
     },
     "5":{
-        "name":"sertbn",
+        "name":"Jane Doe",
         "gender":"Male",
-        "age":"18",
-        "education":"Bachelor's",
-        "salary":"55000",
-        "comment":"feq",
+        "age":"45",
+        "education":"Master's",
+        "salary":"100000",
+        "comment":"great site",
         "collect":"yes"
     },
     "6":{
-        "name":"werg",
+        "name":"jane doe",
         "gender":"Male",
-        "age":"18",
+        "age":"44",
         "education":"Bachelor's",
-        "salary":"35000",
-        "comment":"ewf",
-        "collect":"yes"
-    },
-    "7":{
-        "name":"ERG",
-        "gender":"Male",
-        "age":"18",
-        "education":"PhD",
-        "salary":"60000",
-        "comment":"ERTH",
-        "collect":"yes"
-    },
-    "8":{
-        "name":"hj",
-        "gender":"Male",
-        "age":"18",
-        "education":"PhD",
-        "salary":"60000",
-        "comment":"ryjyrdj",
-        "collect":"yes"
-    },
-    "9":{
-        "name":"egw",
-        "gender":"Male",
-        "age":"22",
-        "education":"Bachelor's",
-        "salary":"410000",
-        "comment":"qrWE",
+        "salary":"70000",
+        "comment":"great site",
         "collect":"yes"
     }
 }
