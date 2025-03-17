@@ -56,17 +56,29 @@
       </header>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1>Design</h1>
-          <div>
-            <p>
-              The project can be broken into two distinct parts 1. Data analysis
-              and graphing 2. The interactive Information system. I have decided
-              to separate these two parts into different files so I can abstract
-              away the code I am not currently working on.
-            </p>
-
+      <h1>Project Structure</h1>
+      <div>
+        <p>This project consists of two main components:</p>
+        <ol>
+          <li>
+            Data Analysis and Graphing – Processing and visualizing
+            salary-related data.
+          </li>
+          <li>
+            Interactive Information System – A website that presents insights
+            and allows user interaction.
+          </li>
+        </ol>
+        <p>
+          To keep the code organized and modular, I have separated these two
+          parts into different files. This abstraction allows me to focus on one
+          aspect at a time without cluttering the codebase.
+        </p>
+        <div class="mt-4">
+          <img src="static/flowchart.png" class="img-fluid" />
+        </div>
+        <div class="row mt-4">
+          <div class="col">
             <h2>Data Cleaning</h2>
             The data I downloaded off of kaggle was in csv format but it was not
             ready for analysis as the numbers were formatted as python strings
@@ -79,10 +91,11 @@
             zoom in to show data between certain points. These graphs should
             also be useful to the end user.
           </div>
-        </div>
-        <div class="col">
-          <div class="mt-4">
-            <img src="static/psudocode.png" class="img-fluid" />
+
+          <div class="col">
+            <div class="mt-4">
+              <img src="static/psudocode.png" class="img-fluid" />
+            </div>
           </div>
         </div>
 
