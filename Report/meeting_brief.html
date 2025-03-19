@@ -61,7 +61,7 @@
       <h1>Meeting The brief</h1>
       <div class="ratio ratio-16x9">
         <video id="video" controls>
-          <source src="/Report/static/video.mp4" type="video/mp4" />
+          <source src="static/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -70,25 +70,21 @@
         <h2 class="text-danger"><em>Basic Requirments</em></h2>
         <ol>
           <li>Collect and prepare the data: Data was found on kaggle</li>
-          <li>Data analytics and visualisation: Done using plotly</li>
-          <li>
-            Create a basic interactive information system interface: Done using
-            Flask
-          </li>
+          <li>Data analytics and visualisation</li>
+          <li>Create a basic interactive information system interface</li>
         </ol>
         <h2 class="text-danger"><em>Advanced requirements</em></h2>
         <ol>
           <li>
             Ensure that users can interact with the data visualisations on the
             information system (e.g., hover to see details, click to filter
-            data, change ranges, etc.): Done using plotly
+            data, change ranges, etc.)
           </li>
           <li>
             Create a form or poll relating to your chosen dataset on your
             information system that collects and stores data from the users.
             This form must show evidence of the use of JavaScript.
             <br />
-            <img src="/Report/static/javascript.png" />
           </li>
           <li>
             Create a separate area on your information system that makes
@@ -97,12 +93,77 @@
           </li>
         </ol>
       </div>
+      <div class="gap-3">
+        <h2>BR 1</h2>
+        <p>
+          My data set was found on kaggle, the link to this is in references.
+        </p>
+        <p>
+          My data was cleande using the csv library along with the replace
+          function.
+        </p>
+        <div><img src="static/cleaning.png" class="img-fluid" /></div>
+        <hr />
+        <h2>BR 2</h2>
+        <p>
+          I used the plotly library to create data visualisations with titles
+          and axis lables. A dictionary containing lists was used to store the
+          data used to make the graphs.
+        </p>
+        <div><img src="static/graph_code.png" class="img-fluid" /></div>
+        <hr />
+        <h2>BR 3</h2>
+        <p>
+          I used Flask to make a website that could be interactive and allow the
+          easy handling of post requests.
+        </p>
+        <p>
+          I used bootstrap to style this website as its simplified styling
+          elimintates the need for custom classes.
+        </p>
+        <div><img src="static/app.py.png" class="img-fluid" /></div>
+        <hr />
+        <h2>AR 1</h2>
+        <p>
+          Plotly has built in functionality to allow users to interact with the
+          graphs.
+        </p>
+        <p>
+          To aid accessibility on my website using javascript I added a function
+          that reads out the hover details for thoes that might have hearing
+          issues
+        </p>
+        <hr />
+        <h2>AR 2</h2>
+        <p>
+          I used the built in form html takes to create a form with multiple
+          different data types.
+        </p>
+        <p>
+          I used javascript to ensure all values are valid such as ages and
+          salarys being non-negative.
+        </p>
+        <p>
+          This data is summerised in a comments section that users can opt in
+          to. These comments are saved to a json file.
+        </p>
+        <div><img src="static/comments.png" class="img-fluid" /></div>
+        <hr />
+        <h2>AR 3</h2>
+        <p>
+          The input from the form is then sent to the backend. It filters the
+          dataframe based on the users input and returns what the user should be
+          making based on the factors they input.
+        </p>
+        <div><img src="static/analysis.png" class="img-fluid" /></div>
+        <hr />
+      </div>
     </div>
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       let video = document.getElementById("video");
-      video.playbackRate = 0.75; // Set default speed to 1.5x
+      video.playbackRate = 0.75;
     });
   </script>
   <script

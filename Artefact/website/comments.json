@@ -1,56 +1,47 @@
 {
-    "1":{
-        "name":"John",
-        "gender":"Male",
-        "age":"44",
-        "education":"Bachelor's",
-        "salary":"75000",
-        "comment":"great site",
-        "collect":"yes"
-    },
-    "2":{
-        "name":"Jane smith",
-        "gender":"Male",
-        "age":"45",
-        "education":"Master's",
-        "salary":"75000",
-        "comment":"thanks for the info",
-        "collect":"yes"
-    },
-    "3":{
-        "name":"Mike Ross",
-        "gender":"Male",
-        "age":"55",
-        "education":"PhD",
-        "salary":"120000",
-        "comment":"thank you",
-        "collect":"yes"
-    },
-    "4":{
-        "name":"John doe",
-        "gender":"Male",
-        "age":"55",
-        "education":"Bachelor's",
-        "salary":"85000",
-        "comment":"great website",
-        "collect":"yes"
-    },
-    "5":{
-        "name":"Jane Doe",
-        "gender":"Male",
-        "age":"45",
-        "education":"Master's",
-        "salary":"100000",
-        "comment":"great site",
-        "collect":"yes"
-    },
-    "6":{
-        "name":"jane doe",
-        "gender":"Male",
-        "age":"44",
-        "education":"Bachelor's",
-        "salary":"70000",
-        "comment":"great site",
-        "collect":"yes"
-    }
+  "1": {
+    "name": "John",
+    "gender": "Male",
+    "age": "44",
+    "education": "Bachelor's",
+    "salary": "75000",
+    "comment": "great site",
+    "collect": "yes"
+  },
+  "2": {
+    "name": "Jane smith",
+    "gender": "Male",
+    "age": "45",
+    "education": "Master's",
+    "salary": "75000",
+    "comment": "thanks for the info",
+    "collect": "yes"
+  },
+  "3": {
+    "name": "Mike Ross",
+    "gender": "Male",
+    "age": "55",
+    "education": "PhD",
+    "salary": "120000",
+    "comment": "thank you",
+    "collect": "yes"
+  },
+  "4": {
+    "name": "John doe",
+    "gender": "Male",
+    "age": "55",
+    "education": "Bachelor's",
+    "salary": "85000",
+    "comment": "great website",
+    "collect": "yes"
+  },
+  "5": {
+    "name": "Jane Doe",
+    "gender": "Male",
+    "age": "45",
+    "education": "Master's",
+    "salary": "100000",
+    "comment": "great site",
+    "collect": "yes"
+  }
 }

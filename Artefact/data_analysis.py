@@ -123,3 +123,17 @@ with open(basepath +"/data_template.json","r") as f:
 #dumps dictionary back to json file format 
 with open(basepath +"/data.json","w") as f:
     json.dump(data,f,indent=4, separators=(",", ":"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

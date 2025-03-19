@@ -83,16 +83,35 @@
         <div class="row mt-4">
           <div class="col">
             <h2>Data Cleaning</h2>
-            The data I downloaded off of kaggle was in csv format but it was not
-            ready for analysis as the numbers were formatted as python strings
-            with a € before the value, there were other issues with the data set
-            that I had to fix too. I wanted to make graphs that showed the
-            effect different factors had on salary, I wanted to do this through
-            a range of different graphs that would be best suited to the chosen
-            factor. These graphs also had to be interactive and should allow
-            users to hover to see the values associated with a point, filter and
-            zoom in to show data between certain points. These graphs should
-            also be useful to the end user.
+            <p>
+              The data I downloaded off of kaggle was in csv format but it was
+              not ready for analysis as the numbers were formatted as python
+              strings with a € before the value, there were other issues with
+              the data set that I had to fix too. I wanted to make graphs that
+              showed the effect different factors had on salary, I wanted to do
+              this through a range of different graphs that would be best suited
+              to the chosen factor. These graphs also had to be interactive and
+              should allow users to hover to see the values associated with a
+              point, filter and zoom in to show data between certain points.
+              These graphs should also be useful to the end user.
+            </p>
+            <h2>Data Analysis</h2>
+            <p>
+              I decided to write psudocode for the function to calculate the top
+              and bottom 10% of earners by each level of eductaion as this was a
+              complex function.
+            </p>
+
+            <p>
+              I initalise a function called top_bottom that expects 2 variables
+              salary and education. It then finds out what 10% of the total
+              people in that education catagory is. I then iterate through the
+              data from the start to the bottom 10%, this is then repeated for
+              the top 10% this is appended to the relivent part of the
+              dictionary. I then sort the salarys for the different levels of
+              education so it can be passed through to the functions. I then
+              call the function.
+            </p>
           </div>
 
           <div class="col">
